@@ -64,8 +64,10 @@ int main(int argc, char *argv[]) {
             //save frequency read from -n argument
             else if (argv[i][1] == 'n')
                 save_frequency = atoi(argv[i+1]);
-            else
+            else {
                 printf("Unknown argument \"%s\"\n", argv[i]);
+                continue;
+            }
             i++;
         }
     }

@@ -29,11 +29,5 @@ void dropVector(vector *v);
 particle *createParticle(particle *tl, vector *map_size);
 void dropParticle(particle *p);
 
-//get signal strength at position pos
-double get_signal(vector *pos);
-
-//calculate new speed and position
-void next_iteration(particle *ptcl, double w, double c1, double c2, double r1, double r2);
-
 
 #endif

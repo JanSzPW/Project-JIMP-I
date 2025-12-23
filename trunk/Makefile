@@ -6,3 +6,6 @@ run: all
 
 test: all
 	bin/swarm data/map.txt
+	bin/swarm data/map.txt -t -i 50 -p 50 -n 10 -c data/config.txt
+	bin/swarm data/map.txt -i 50 -t test -p 50 -n 10 -c data/config.txt
+	bin/swarm data/map.txt - -t test -p 50 -n 10 -c data/config.txt
