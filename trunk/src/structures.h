@@ -23,11 +23,18 @@ typedef struct map {
 	particle *particles;
 } map;
 
+
+vector *createVector(int x, int y);
+void dropVector(vector *v);
+
+particle *createParticle(particle *tl, vector *map_size);
+void dropParticle(particle *p);
+
 //get signal strength at position pos
-double get_signal(vector pos);
+double get_signal(vector *pos);
 
 //calculate new speed and position
-void next_iteration(particle ptcl);
+void next_iteration(particle *ptcl);
 
 
 #endif
