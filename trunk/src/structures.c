@@ -22,7 +22,6 @@ particle*
 createParticle(particle *tl, vector *map_size) {
 	particle *ptcl = malloc( sizeof(particle) );
 	ptcl -> position = createVector(rand()%map_size->x, rand()%map_size->y);
-	ptcl -> weight = (double)rand()/INT_MAX;
 	ptcl -> velocity = createVector(0,0);
 	ptcl -> p_best = createVector(ptcl -> position -> x, ptcl -> position -> y);
 
@@ -47,6 +46,6 @@ get_signal(vector *pos) {
 }
 
 void
-next_iteration(particle *ptcl) {}
+next_iteration(particle *ptcl, double w, double c1, double c2, double r1, double r2) {}
 
 

@@ -10,7 +10,6 @@ typedef struct particle {
 	vector *position;
 	vector *velocity;
 	vector *p_best;		//personal best
-	double weight;		//inertia
 	struct particle *nxt;	//instead of a seperate swarm struct
 			     	//we will have a linked list of particles
 			     	//attached to map structure
@@ -34,7 +33,7 @@ void dropParticle(particle *p);
 double get_signal(vector *pos);
 
 //calculate new speed and position
-void next_iteration(particle *ptcl);
+void next_iteration(particle *ptcl, double w, double c1, double c2, double r1, double r2);
 
 
 #endif
