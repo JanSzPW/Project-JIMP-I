@@ -7,4 +7,10 @@ get_signal(vector *pos) {
 }
 
 void
-next_iteration(particle *ptcl, double w, double c1, double c2, double r1, double r2) {}
+next_iteration(particle *ptcl, double w, double c1, double c2, double r1, double r2) {
+
+	//the equation goes here
+
+	if (ptcl->nxt != NULL)
+		next_iteration(ptcl -> nxt, w, c1, c2, r1, r2);
+}

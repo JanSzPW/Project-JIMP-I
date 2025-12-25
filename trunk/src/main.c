@@ -83,6 +83,9 @@ int main(int argc, char *argv[]) {
     map *main_map = readMap(in);
     fclose(in);
 
+    for (i=0;i<particles;i++)
+        main_map -> particles = createParticle(main_map->particles, main_map->size);
+
     dropMap(main_map);
 
 }

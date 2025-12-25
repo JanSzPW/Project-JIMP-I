@@ -9,6 +9,7 @@ createVector(int x, int y) {
 	vector *vec = malloc( sizeof(vector) );
 	vec -> x = x;
 	vec -> y = y;
+	vec -> val = -1000.0;
 
 	return vec;
 }
@@ -24,11 +25,12 @@ createParticle(particle *tl, vector *map_size) {
 	ptcl -> position = createVector(rand()%map_size->x, rand()%map_size->y);
 	ptcl -> velocity = createVector(0,0);
 	ptcl -> p_best = createVector(ptcl -> position -> x, ptcl -> position -> y);
+	ptcl -> nxt = tl;
 
 	return ptcl;
 }
 
-void
+particle*
 dropParticle(particle *p) {
 	free(p->position);
 	free(p->velocity);
@@ -38,6 +40,7 @@ dropParticle(particle *p) {
 	p = p->nxt;
 
 	free(tmp);
+	return p;
 }
 
 

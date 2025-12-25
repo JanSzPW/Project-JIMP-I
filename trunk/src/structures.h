@@ -4,6 +4,7 @@
 typedef struct vector {
 	int x;
 	int y;
+	double val; //only used for p_best and g_best vectors
 } vector;
 
 typedef struct particle {
@@ -27,7 +28,7 @@ vector *createVector(int x, int y);
 void dropVector(vector *v);
 
 particle *createParticle(particle *tl, vector *map_size);
-void dropParticle(particle *p);
+particle *dropParticle(particle *p);
 
 
 #endif

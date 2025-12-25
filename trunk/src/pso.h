@@ -2,6 +2,7 @@
 #define PSO_H
 
 #include "structures.h"
+#include <stdlib.h>
 
 //get signal strength at position pos
 double get_signal(vector *pos);
