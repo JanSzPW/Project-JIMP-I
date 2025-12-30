@@ -2,8 +2,8 @@
 
 
 double
-get_signal(vector *pos) {
-	return 0.0; //todo
+get_signal(map *mp, vector *pos) {
+	return mp->signal[pos->x*mp->size->x + pos->y];
 }
 
 void

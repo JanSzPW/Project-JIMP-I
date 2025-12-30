@@ -1,5 +1,6 @@
 #include "structures.h"
 #include "readMap.h"
+#include "pso.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -83,8 +84,19 @@ int main(int argc, char *argv[]) {
     map *main_map = readMap(in);
     fclose(in);
 
+    if (main_map == NULL)
+        return EXIT_FAILURE;
+
     for (i=0;i<particles;i++)
         main_map -> particles = createParticle(main_map->particles, main_map->size);
+
+    vector *v = createVector(0,0);
+    printf("%lf\n", get_signal(main_map, v));
+    v->x=0; v->y=1;
+    printf("%lf\n", get_signal(main_map, v));
+    v->x=1; v->y=1;
+    printf("%lf\n", get_signal(main_map, v));
+    dropVector(v);
 
     dropMap(main_map);
 
