@@ -83,13 +83,14 @@ int main(int argc, char *argv[]) {
     }
     map *main_map = readMap(in);
     fclose(in);
-
     if (main_map == NULL)
         return EXIT_FAILURE;
 
+    //initiate particles
     for (i=0;i<particles;i++)
         main_map -> particles = createParticle(main_map->particles, main_map->size);
 
+    //this is for testing
     vector *v = createVector(0,0);
     printf("%lf\n", get_signal(main_map, v));
     v->x=0; v->y=1;
@@ -98,6 +99,27 @@ int main(int argc, char *argv[]) {
     printf("%lf\n", get_signal(main_map, v));
     dropVector(v);
 
+    //main logic
+	char filename[32];
+    FILE *save;
+    for (i=0;i<iterations;i++) {
+        //save current state every n iterations
+        if (save_frequency>0 && i%save_frequency == 0) {
+            snprintf(filename, sizeof(filename), "data/save_%d.txt", i/save_frequency);
+            save = fopen(filename, "w");
+            fprintf(save, "Iteration %d:\n", i);
+            save_state(main_map->particles, particles, save);
+            fclose(save);
+        }
+        //advance particles
+        next_iteration(main_map->particles,w,c1,c2,r1,r2);
+    }
+    //final save of the state at the end
+    save = fopen("data/save_final.txt", "w");
+    save_state(main_map->particles, particles, save);
+    fclose(save);
+
+    //free memory
     dropMap(main_map);
 
 }
