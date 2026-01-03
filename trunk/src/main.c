@@ -87,8 +87,9 @@ int main(int argc, char *argv[]) {
         return EXIT_FAILURE;
 
     //initiate particles
-    for (i=0;i<particles;i++)
+    for (i=0;i<particles;i++) {
         main_map -> particles = createParticle(main_map->particles, main_map->size);
+    }
 
     //this is for testing
     vector *v = createVector(0,0);
