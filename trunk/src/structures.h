@@ -2,8 +2,8 @@
 #define STRUCT_H
 
 typedef struct vector {
-	int x;
-	int y;
+	double x;
+	double y;
 	double val; //only used for p_best and g_best vectors
 } vector;
 
@@ -24,7 +24,7 @@ typedef struct map {
 } map;
 
 
-vector *createVector(int x, int y);
+vector *createVector(double x, double y);
 void dropVector(vector *v);
 
 particle *createParticle(particle *tl, vector *map_size);

@@ -5,7 +5,7 @@
 
 
 vector*
-createVector(int x, int y) {
+createVector(double x, double y) {
 	vector *vec = malloc( sizeof(vector) );
 	vec -> x = x;
 	vec -> y = y;
@@ -22,7 +22,7 @@ dropVector(vector *v) {
 particle*
 createParticle(particle *tl, vector *map_size) {
 	particle *ptcl = malloc( sizeof(particle) );
-	ptcl -> position = createVector(rand()%map_size->x, rand()%map_size->y);
+	ptcl -> position = createVector(rand()%(int)map_size->x, rand()%(int)map_size->y);
 	ptcl -> velocity = createVector(0,0);
 	ptcl -> p_best = createVector(ptcl -> position -> x, ptcl -> position -> y);
 	ptcl -> nxt = tl;
