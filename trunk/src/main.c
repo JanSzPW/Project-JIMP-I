@@ -91,14 +91,6 @@ int main(int argc, char *argv[]) {
         main_map -> particles = createParticle(main_map->particles, main_map->size);
     }
 
-    //this is for testing
-    vector *v = createVector(0,0);
-    printf("%lf\n", get_signal(main_map, v));
-    v->x=0; v->y=1;
-    printf("%lf\n", get_signal(main_map, v));
-    v->x=1; v->y=1;
-    printf("%lf\n", get_signal(main_map, v));
-    dropVector(v);
 
     //main logic
 	char filename[32];
@@ -113,7 +105,7 @@ int main(int argc, char *argv[]) {
             fclose(save);
         }
         //advance particles
-        next_iteration(main_map->particles,w,c1,c2,r1,r2);
+        next_iteration(main_map->particles,w,c1,c2,r1,r2, main_map);
     }
     //final save of the state at the end
     save = fopen("data/save_final.txt", "w");
