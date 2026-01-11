@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 
 int main(int argc, char *argv[]) {
 
@@ -87,6 +88,7 @@ int main(int argc, char *argv[]) {
         return EXIT_FAILURE;
 
     //initiate particles
+    srand(time(NULL));
     for (i=0;i<particles;i++) {
         main_map -> particles = createParticle(main_map->particles, main_map->size);
     }
@@ -111,6 +113,8 @@ int main(int argc, char *argv[]) {
     save = fopen("data/save_final.txt", "w");
     save_state(main_map->particles, particles, save);
     fclose(save);
+
+    printf("Found strongest signal at location (%d, %d). Singal strength: %lf\n", (int)main_map->g_best->x, (int)main_map->g_best->y, main_map->g_best->val);
 
     //free memory
     dropMap(main_map);
