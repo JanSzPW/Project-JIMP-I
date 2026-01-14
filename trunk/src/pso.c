@@ -4,7 +4,8 @@
 //get signal at a specific location
 double
 get_signal(map *mp, vector *pos) {
-	if (pos->x < 0 || pos->y < 0 || pos->x>mp -> size->x || pos->y > mp->size->y)
+	if (pos->x < 0 || pos->y < 0 || pos->x > mp->size->x || pos->y > mp->size->y)
+		return -1000.0;
 	return mp->signal[(int)pos->x*(int)mp->size->x + (int)pos->y];
 }
 
