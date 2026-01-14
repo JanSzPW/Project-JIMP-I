@@ -100,18 +100,18 @@ int main(int argc, char *argv[]) {
     for (i=0;i<iterations;i++) {
         //save current state every n iterations
         if (save_frequency>0 && i%save_frequency == 0) {
-            snprintf(filename, sizeof(filename), "data/save_%d.txt", i/save_frequency);
+            snprintf(filename, sizeof(filename), "data/save_%d.svg", i/save_frequency);
             save = fopen(filename, "w");
-            fprintf(save, "Iteration %d:\n", i);
-            save_state(main_map->particles, particles, save);
+            // fprintf(save, "Iteration %d:\n", i);
+            save_state(main_map->particles, particles, save, main_map->size->x, main_map->size->y);
             fclose(save);
         }
         //advance particles
         next_iteration(main_map->particles,w,c1,c2,r1,r2, main_map);
     }
     //final save of the state at the end
-    save = fopen("data/save_final.txt", "w");
-    save_state(main_map->particles, particles, save);
+    save = fopen("data/save_final.svg", "w");
+    save_state(main_map->particles, particles, save, main_map->size->x, main_map->size->y);
     fclose(save);
 
     printf("Found strongest signal at location (%d, %d). Singal strength: %lf\n", (int)main_map->g_best->x, (int)main_map->g_best->y, main_map->g_best->val);
