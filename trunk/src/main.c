@@ -56,10 +56,6 @@ int main(int argc, char *argv[]) {
                         c1 = tmp_d;
                     else if (strcmp(tmp, "c2") == 0)
                         c2 = tmp_d;
-                    else if (strcmp(tmp, "r1") == 0)
-                        r1 = tmp_d;
-                    else if (strcmp(tmp, "r2") == 0)
-                        r2 = tmp_d;
                 }
                 fclose(conf);
             }
