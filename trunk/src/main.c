@@ -37,11 +37,21 @@ int main(int argc, char *argv[]) {
             printf("Arguments: -p <particles> -i <iterations> -c <config file> -n <save frequency>\n");
         else {
             //particle count read from -p argument
-            if (argv[i][1] == 'p')
+            if (argv[i][1] == 'p') {
+				if (atoi(argv[i+1]) <= 0) {
+					printf("-p can't be less than or equal to zero\n");
+					return EXIT_FAILURE;					
+				}
                 particles = atoi(argv[i+1]);
+			}
             //iteration count read from -i argument
-            else if (argv[i][1] == 'i')
+            else if (argv[i][1] == 'i') {
+				if (atoi(argv[i+1]) <= 0) {
+					printf("-i can't be less than or equal to zero\n");
+					return EXIT_FAILURE;					
+				}
                 iterations = atoi(argv[i+1]);
+			}
             //process config file
             else if (argv[i][1] == 'c') {
                 FILE *conf = fopen(argv[i+1], "r");
