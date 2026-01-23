@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
             if (argv[i][1] == 'p') {
 				if (atoi(argv[i+1]) <= 0) {
 					printf("-p can't be less than or equal to zero\n");
-					return EXIT_FAILURE;					
+					continue;			
 				}
                 particles = atoi(argv[i+1]);
 			}
@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
             else if (argv[i][1] == 'i') {
 				if (atoi(argv[i+1]) <= 0) {
 					printf("-i can't be less than or equal to zero\n");
-					return EXIT_FAILURE;					
+					continue;				
 				}
                 iterations = atoi(argv[i+1]);
 			}
